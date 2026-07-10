@@ -1,0 +1,44 @@
+{
+  "name": "pokedex-off-fl1",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/kit": "^2.63.0",
+    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "@tailwindcss/vite": "^4.3.2",
+    "@types/node": "^26.1.1",
+    "lefthook": "^2.1.10",
+    "lucide-svelte": "^1.0.1",
+    "oxfmt": "^0.58.0",
+    "oxlint": "^1.73.0",
+    "playwright": "^1.61.1",
+    "svelte": "^5.56.1",
+    "svelte-check": "^4.6.0",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^6.0.3",
+    "ultracite": "^7.9.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.10",
+    "zod": "^4.4.3"
+  },
+  "allowScripts": {
+    "lefthook@2.1.10": true
+  }
+}
