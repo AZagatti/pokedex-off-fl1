@@ -21,6 +21,7 @@
 - **Favorites** persisted to `localStorage` — heart any card or detail page
 - **Dark/light theme** (persisted, respects `prefers-color-scheme`), fully keyboard-navigable, screen-reader-friendly, honors `prefers-reduced-motion`
 - Every PokeAPI response is validated with **zod** schemas
+- **Lighthouse**: 100 Accessibility · 100 Best Practices · 100 SEO · 100 Performance (devtools throttling; see [docs/DECISIONS.md](docs/DECISIONS.md))
 
 | Light theme | Detail page | Filters |
 | --- | --- | --- |

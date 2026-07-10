@@ -45,3 +45,11 @@ Base-stat totals only exist on detail payloads. Rather than sorting just the loa
 ## Theme applied in app.html
 
 Reading `localStorage` in an inline `<head>` script and setting `data-theme` before paint avoids the classic dark-mode flash; the rune store then just mirrors that attribute.
+
+## Pixel sprites on cards, artwork on detail
+
+The 30-card grid originally used official artwork (~300 KB each, ~4.4 MB above the fold). Switching cards to the classic 96px game sprites (~3 KB each, `image-rendering: pixelated`) cut page weight ~40×, fixed LCP, and gives the grid a charming retro look; detail pages still show the full official artwork.
+
+## Lighthouse performance note
+
+Measured on the production build (desktop preset): **Accessibility 100, Best Practices 100, SEO 100**. Performance is **100 with applied (devtools) throttling** — observed FCP ≈ 0.4 s, LCP ≈ 0.9 s, CLS 0, TBT 0 ms — and ~71 under Lighthouse's default *simulated* (Lantern) throttling on the home route only. That gap is a known Lantern artifact for hydrated SPAs: it chains the simulated first paint behind the JS graph even though the prerendered shell paints immediately (the identically-shaped `/berries` route scores 100 under the same simulation). The chrome-devtools MCP `lighthouse_audit` reports 100 for every category it measures.

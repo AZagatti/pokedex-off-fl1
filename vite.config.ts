@@ -14,6 +14,9 @@ export default defineConfig({
       adapter: adapter({
         fallback: "404.html",
       }),
+      // Inline the small global stylesheet into the HTML to remove the
+      // render-blocking CSS request.
+      inlineStyleThreshold: 16_384,
       paths: {
         base: process.env.NODE_ENV === "development" ? "" : "/pokedex-off-fl1",
       },

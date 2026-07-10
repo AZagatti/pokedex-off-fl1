@@ -186,7 +186,7 @@
 		</p>
 	{/if}
 	<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-		{#each Array.from({ length: 10 }, (_, i) => i) as i (i)}
+		{#each Array.from({ length: 30 }, (_, i) => i) as i (i)}
 			<SkeletonCard />
 		{/each}
 	</div>
@@ -200,8 +200,8 @@
 		class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
 		data-testid="pokemon-grid"
 	>
-		{#each visible as pokemon (pokemon.id)}
-			<PokemonCard {pokemon} />
+		{#each visible as pokemon, index (pokemon.id)}
+			<PokemonCard {pokemon} eager={index < 10} />
 		{/each}
 		{#if loadingMore}
 			{#each Array.from({ length: 5 }, (_, i) => i) as i (i)}

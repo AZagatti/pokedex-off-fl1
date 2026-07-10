@@ -6,10 +6,14 @@
 	import PokemonImage from './PokemonImage.svelte';
 	import TypeBadge from './TypeBadge.svelte';
 
-	let { pokemon }: { pokemon: Pokemon } = $props();
+	let { pokemon, eager = false }: { pokemon: Pokemon; eager?: boolean } = $props();
 
+	// Pixel sprite (~3 KB) instead of official artwork (~300 KB) — keeps the
+	// grid light; detail pages show the full artwork.
 	const sprite = $derived(
-		pokemon.sprites.other?.['official-artwork']?.front_default ?? pokemon.sprites.front_default,
+		pokemon.sprites.front_default ??
+			pokemon.sprites.other?.['official-artwork']?.front_default ??
+			null,
 	);
 	const primaryType = $derived(pokemon.types[0]?.type.name ?? 'normal');
 </script>
@@ -32,7 +36,7 @@
 		<FavoriteButton name={pokemon.name} />
 	</div>
 	<div class="pointer-events-none relative flex flex-col items-center gap-2">
-		<PokemonImage src={sprite} alt="" size={120} />
+		<PokemonImage src={sprite} alt="" size={120} {eager} pixelated />
 		<span class="text-xs font-medium text-muted">{formatDexNumber(pokemon.id)}</span>
 		<h2 class="font-bold text-ink">{formatName(pokemon.name)}</h2>
 		<div class="flex gap-1.5">
