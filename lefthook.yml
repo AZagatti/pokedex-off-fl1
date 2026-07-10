@@ -5,7 +5,7 @@ pre-commit:
       glob: "*.{ts,js,svelte}"
       run: npx oxlint {staged_files}
     - name: oxfmt
-      glob: "*.{ts,js}"
+      glob: "*.{ts,js,md,html,css,json,yml}"
       run: npx oxfmt --check {staged_files}
     - name: typecheck
       run: npm run check
